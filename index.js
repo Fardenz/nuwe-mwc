@@ -3,7 +3,7 @@ const app = express();
 
 const { getDbConnection } = require('./src/db');
 
-app.get('/company', function (req, res) {
+app.get('/company', async function (req, res) {
     const sequelize = await getDbConnection();
     const companies = await sequelize.models.company.findAll({
         raw: true,
@@ -11,22 +11,27 @@ app.get('/company', function (req, res) {
     return companies;
 });
 
-app.post('/company', function (req, res) {
+app.post('/company', async function (req, res) {
     const sequelize = await getDbConnection();
     await sequelize.models.company.create(req.data);
 });
 
-app.delete('/company/:id', function (req, res) {
+app.delete('/company/:id', async function (req, res) {
     const sequelize = await getDbConnection();
     const company = await sequelize.models.company.findOne();
     company.destroy();
 });
 
-app.put('/company/:id', function (req, res) {
+app.put('/company/:id', async function (req, res) {
     const sequelize = await getDbConnection();
     let company = await sequelize.models.company.findOne();
     company = { ...company, ...req.data };
-    return company;
+    res.end(company);
+});
+
+app.get('/', (req, res) => {
+    console.log('The api');
+    res.end('The api');
 });
 
 app.listen(3000);
