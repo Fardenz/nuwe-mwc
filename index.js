@@ -29,4 +29,6 @@ app.put('/company/:id', function (req, res) {
     return company;
 });
 
+app.get('/', 'The api');
+
 app.listen(3000);
