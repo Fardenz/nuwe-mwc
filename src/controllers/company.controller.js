@@ -1,5 +1,5 @@
 module.exports = {
-    getCompany: function (req, res) {
+    getCompany: async function (req, res) {
         const sequelize = await getDbConnection();
         return sequelize.models.company.findOne({
             where: {
@@ -7,18 +7,18 @@ module.exports = {
             },
         });
     },
-    getCompanies: function (req, res) {
+    getCompanies: async function (req, res) {
         const sequelize = await getDbConnection();
         const companies = await sequelize.models.company.findAll({
             raw: true,
         });
         return companies;
     },
-    createCompany: function (req, res) {
+    createCompany: async function (req, res) {
         const sequelize = await getDbConnection();
         await sequelize.models.company.create(req.data);
     },
-    deleteCompany: function (req, res) {
+    deleteCompany: async function (req, res) {
         const sequelize = await getDbConnection();
         const company = await sequelize.models.company.findOne({
             where: {
@@ -27,7 +27,7 @@ module.exports = {
         });
         company.destroy();
     },
-    editCompany: function (req, res) {
+    editCompany: async function (req, res) {
         const sequelize = await getDbConnection();
         let company = await sequelize.models.company.findOne({
             where: {
