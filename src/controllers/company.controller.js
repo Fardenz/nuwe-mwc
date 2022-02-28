@@ -14,7 +14,7 @@ module.exports = {
         });
         return companies;
     },
-    createCompanies: function (req, res) {
+    createCompany: function (req, res) {
         const sequelize = await getDbConnection();
         await sequelize.models.company.create(req.data);
     },
@@ -27,7 +27,7 @@ module.exports = {
         });
         company.destroy();
     },
-    updateCompany: function (req, res) {
+    editCompany: function (req, res) {
         const sequelize = await getDbConnection();
         let company = await sequelize.models.company.findOne({
             where: {
