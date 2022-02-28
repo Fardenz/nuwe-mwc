@@ -22,7 +22,7 @@ async function initializeDbModels() {
         logging: log.debug.bind(log),
     });
 
-    const modelDefiners = [require('./models/Developer.model')];
+    const modelDefiners = [require('../models/Company.model'), require('../models/Flight.model')];
     for (const modelDefiner of modelDefiners) {
         modelDefiner(sequelize);
     }

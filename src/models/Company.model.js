@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, UUIDV4 } = require('sequelize');
 
 /**
  *
@@ -6,11 +6,11 @@ const { DataTypes } = require('sequelize');
  */
 module.exports = function (sequelize) {
     return sequelize.define(
-        'Company',
+        'company',
         {
             id: {
                 type: DataTypes.UUID,
-                defaultValue: Sequelize.UUIDV4,
+                defaultValue: UUIDV4,
                 primaryKey: true,
             },
             name: {
@@ -28,7 +28,7 @@ module.exports = function (sequelize) {
             total_seats: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-            }
+            },
         },
         {
             tableName: 'Company',

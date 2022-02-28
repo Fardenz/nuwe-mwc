@@ -1,4 +1,4 @@
-const { DataTypes, Sequelize } = require('sequelize');
+const { DataTypes, UUIDV4 } = require('sequelize');
 
 /**
  *
@@ -6,11 +6,11 @@ const { DataTypes, Sequelize } = require('sequelize');
  */
 module.exports = function (sequelize) {
     return sequelize.define(
-        'Flight',
+        'flight',
         {
             id: {
                 type: DataTypes.UUID,
-                defaultValue: Sequelize.UUIDV4,
+                defaultValue: UUIDV4,
                 primaryKey: true,
             },
             company_id: {
