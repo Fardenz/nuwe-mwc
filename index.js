@@ -26,9 +26,12 @@ app.put('/company/:id', async function (req, res) {
     const sequelize = await getDbConnection();
     let company = await sequelize.models.company.findOne();
     company = { ...company, ...req.data };
-    return company;
+    res.end(company);
 });
 
-app.get('/', () => 'The api');
+app.get('/', (req, res) => {
+    console.log('The api');
+    res.end('The api');
+});
 
 app.listen(3000);
