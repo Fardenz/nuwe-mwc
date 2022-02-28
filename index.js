@@ -29,6 +29,6 @@ app.put('/company/:id', async function (req, res) {
     return company;
 });
 
-app.get('/', 'The api');
+app.get('/', () => 'The api');
 
 app.listen(3000);
