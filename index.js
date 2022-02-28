@@ -16,8 +16,17 @@ app.post('/company', function (req, res) {
     await sequelize.models.company.create(req.data);
 });
 
-app.delete('/company', function (req, res) {});
+app.delete('/company/:id', function (req, res) {
+    const sequelize = await getDbConnection();
+    const company = await sequelize.models.company.findOne();
+    company.destroy();
+});
 
-app.put('/company', function (req, res) {});
+app.put('/company/:id', function (req, res) {
+    const sequelize = await getDbConnection();
+    let company = await sequelize.models.company.findOne();
+    company = { ...company, ...req.data };
+    return company;
+});
 
 app.listen(3000);
