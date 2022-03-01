@@ -17,7 +17,8 @@ async function getDbConnection() {
  * @returns {Promise<import('sequelize').Sequelize>}
  */
 async function initializeDbModels() {
-    sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://mwc:changeme@localhost:5432/mwc', {
+    const uri = process.env.DATABASE_URL || 'postgres://mwc:changeme@localhost:5432/mwc';
+    sequelize = new Sequelize(uri, {
         /* dialect: 'postgres',
         host: 'localhost',
         port: 5432,
