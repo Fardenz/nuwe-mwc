@@ -40,6 +40,15 @@ module.exports = function (sequelize) {
             seats: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+                validate: {
+                    isNumber: function (val) {
+                        if (typeof val == 'number') {
+                            return Number.isInteger(val);
+                        } else {
+                            return false;
+                        }
+                    },
+                },
             },
         },
         {
