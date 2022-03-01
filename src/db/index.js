@@ -1,3 +1,4 @@
+require('dotenv').config();
 const log = require('log4js').getLogger('db');
 const { Sequelize } = require('sequelize');
 
@@ -17,8 +18,8 @@ async function getDbConnection() {
  */
 async function initializeDbModels() {
     sequelize = new Sequelize({
-        dialect: 'sqlite',
-        storage: 'database.sqlite',
+        dialect: 'postgres',
+        host: process.env.DATABASE_URL,
         logging: log.debug.bind(log),
     });
 
