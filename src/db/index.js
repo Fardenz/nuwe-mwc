@@ -47,6 +47,7 @@ async function initializeDbModels() {
         ssl: ssl,
         dialectOptions: {
             ssl: ssl,
+            rejectUnauthorized: false,
         },
     });
 
