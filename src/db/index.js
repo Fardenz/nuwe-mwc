@@ -45,6 +45,9 @@ async function initializeDbModels() {
         password: password || 'changeme',
         logging: log.debug.bind(log),
         ssl: ssl,
+        dialectOptions: {
+            ssl: ssl,
+        },
     });
 
     const modelDefiners = [require('../models/Company.model'), require('../models/Flight.model')];
