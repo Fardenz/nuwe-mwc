@@ -17,13 +17,13 @@ async function getDbConnection() {
  * @returns {Promise<import('sequelize').Sequelize>}
  */
 async function initializeDbModels() {
-    sequelize = new Sequelize({
-        dialect: 'postgres',
+    sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://mwc:changeme@localhost:5432/mwc', {
+        /* dialect: 'postgres',
         host: 'localhost',
         port: 5432,
         username: 'mwc',
         database: 'mwc',
-        password: 'changeme',
+        password: 'changeme', */
         logging: log.debug.bind(log),
     });
 
