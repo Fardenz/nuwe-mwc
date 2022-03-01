@@ -40,7 +40,8 @@ module.exports = {
                 id: req.params.id,
             },
         });
-        company = { ...company, ...req.body };
-        res.status(200).send(await company.save());
+        company.set(req.body);
+        const updated = await company.save();
+        res.status(200).send(updated);
     },
 };
