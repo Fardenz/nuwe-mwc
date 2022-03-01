@@ -31,6 +31,7 @@ module.exports = {
                 id: req.params.id,
             },
         });
+        if (!flight) res.status(500).send(false);
         flight.destroy();
         res.status(200).send(true);
     },
