@@ -1,24 +1,30 @@
+const { getDbConnection } = require('../db');
+
 module.exports = {
-    getFlight: function (req, res) {
+    getFlight: async function (req, res) {
         const sequelize = await getDbConnection();
-        return sequelize.models.flight.findOne({
-            where: {
-                id: req.params.id,
-            },
-        });
+        res.status(200).send(
+            await sequelize.models.flight.findOne({
+                where: {
+                    id: req.params.id,
+                },
+            }),
+        );
     },
-    getFlights: function (req, res) {
+       
+    getFlights: async function (req, res) {
         const sequelize = await getDbConnection();
+        console.log(sequelize.models);
         const flights = await sequelize.models.flight.findAll({
             raw: true,
         });
-        return flights;
+        res.status(200).send(flights);
     },
-    createFlight: function (req, res) {
+    createFlight: async function (req, res) {
         const sequelize = await getDbConnection();
-        await sequelize.models.flight.create(req.data);
+        res.status(200).send( await sequelize.models.flight.create(req.data));
     },
-    deleteFlight: function (req, res) {
+    deleteFlight: async function (req, res) {
         const sequelize = await getDbConnection();
         const flight = await sequelize.models.flight.findOne({
             where: {
@@ -26,8 +32,9 @@ module.exports = {
             },
         });
         flight.destroy();
+        res.status(200).send(true);
     },
-    editFlight: function (req, res) {
+    editFlight: async function (req, res) {
         const sequelize = await getDbConnection();
         let flight = await sequelize.models.flight.findOne({
             where: {
@@ -35,6 +42,6 @@ module.exports = {
             },
         });
         flight= { ...flight, ...req.data };
-        return flight;
+        res.status(200).send(flight);
     },
 };
