@@ -41,6 +41,6 @@ module.exports = {
             },
         });
         company = { ...company, ...req.body };
-        res.status(200).send(company);
+        res.status(200).send(await company.save());
     },
 };
