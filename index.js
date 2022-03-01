@@ -10,4 +10,4 @@ app.use(require('./src/routes/company.route'));
 app.use(require('./src/routes/flight.route'));
 
 console.log('Server running');
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
