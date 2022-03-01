@@ -41,7 +41,8 @@ module.exports = {
                 id: req.params.id,
             },
         });
-        flight = { ...flight, ...req.body };
-        res.status(200).send(flight);
+        flight.set(req.body);
+        const updated = await flight.save();
+        res.status(200).send(updated);
     },
 };
