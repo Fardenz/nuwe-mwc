@@ -19,15 +19,7 @@ async function getDbConnection() {
 async function initializeDbModels() {
     const uri = process.env.DATABASE_URL || 'postgres://mwc:changeme@localhost:5432/mwc';
     console.log(uri);
-    sequelize = new Sequelize(uri, {
-        /* dialect: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        username: 'mwc',
-        database: 'mwc',
-        password: 'changeme', */
-        logging: log.debug.bind(log),
-    });
+    sequelize = new Sequelize(uri);
 
     const modelDefiners = [require('../models/Company.model'), require('../models/Flight.model')];
     for (const modelDefiner of modelDefiners) {
