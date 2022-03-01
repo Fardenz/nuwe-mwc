@@ -18,7 +18,8 @@ async function getDbConnection() {
  */
 async function initializeDbModels() {
     const uri = process.env.DATABASE_URL || 'postgres://mwc:changeme@localhost:5432/mwc';
-    console.log(uri);
+    const ssl = process.env.DATABASE_URL && true;
+    console.log(ssl, uri);
     sequelize = new Sequelize(uri, {
         /* dialect: 'postgres',
         host: 'localhost',
@@ -27,7 +28,7 @@ async function initializeDbModels() {
         database: 'mwc',
         password: 'changeme', */
         logging: log.debug.bind(log),
-        ssl: process.env.DATABASE_URL && true,
+        ssl: ssls,
     });
 
     const modelDefiners = [require('../models/Company.model'), require('../models/Flight.model')];
