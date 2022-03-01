@@ -1,18 +1,17 @@
 // import express
-const {Router} = require('express')
-const router = Router()
+const { Router } = require('express');
+const router = Router();
 
 //import controllers
-const flightCtrl = require('../controllers/flight.controller')
-
+const flightCtrl = require('../controllers/flight.controller');
 
 // define the different routes
 
 router.get('/flights', flightCtrl.getFlights);
-router.post('/flight', flightCtrl.createFlight);
-router.get('/flight/:id', flightCtrl.getFlight);
-router.put('/flight/:id', flightCtrl.editFlight);
-router.delete('/flight/:id', flightCtrl.deleteFlight);
+router.post('/flights', flightCtrl.createFlight);
+router.get('/flights/:id', flightCtrl.getFlight);
+router.put('/flights/:id', flightCtrl.editFlight);
+router.delete('/flights/:id', flightCtrl.deleteFlight);
 
 //export the module
-module.exports = router
+module.exports = router;

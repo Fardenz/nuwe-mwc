@@ -19,7 +19,11 @@ async function getDbConnection() {
 async function initializeDbModels() {
     sequelize = new Sequelize({
         dialect: 'postgres',
-        host: process.env.DATABASE_URL,
+        host: 'localhost',
+        port: 5432,
+        username: 'mwc',
+        database: 'mwc',
+        password: 'changeme',
         logging: log.debug.bind(log),
     });
 
