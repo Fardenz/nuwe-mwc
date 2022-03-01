@@ -46,7 +46,10 @@ async function initializeDbModels() {
         logging: log.debug.bind(log),
         ssl: ssl,
         dialectOptions: {
-            ssl: ssl,
+            ssl: {
+                ssl: ssl,
+                rejectUnauthorized: false,
+            },
             rejectUnauthorized: false,
         },
     });
