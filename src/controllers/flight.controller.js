@@ -11,7 +11,7 @@ module.exports = {
             }),
         );
     },
-       
+
     getFlights: async function (req, res) {
         const sequelize = await getDbConnection();
         console.log(sequelize.models);
@@ -22,7 +22,7 @@ module.exports = {
     },
     createFlight: async function (req, res) {
         const sequelize = await getDbConnection();
-        res.status(200).send( await sequelize.models.flight.create(req.data));
+        res.status(200).send(await sequelize.models.flight.create(req.body));
     },
     deleteFlight: async function (req, res) {
         const sequelize = await getDbConnection();
@@ -41,7 +41,7 @@ module.exports = {
                 id: req.params.id,
             },
         });
-        flight= { ...flight, ...req.data };
+        flight = { ...flight, ...req.body };
         res.status(200).send(flight);
     },
 };
