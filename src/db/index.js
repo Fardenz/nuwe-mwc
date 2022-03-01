@@ -26,6 +26,16 @@ async function initializeDbModels() {
     const port = uri.split('@')[1].split(':')[1].split('/')[0];
     const database = uri.split('@')[1].split(':')[1].split('/')[1];
 
+    console.log({
+        dialect: 'postgres',
+        host: host || 'localhost',
+        port: port || 5432,
+        username: username || 'mwc',
+        database: database || 'mwc',
+        password: password || 'changeme',
+        ssl: ssl,
+    });
+
     sequelize = new Sequelize(uri, {
         dialect: 'postgres',
         host: host || 'localhost',
