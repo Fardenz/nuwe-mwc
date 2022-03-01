@@ -8,6 +8,6 @@ app.get('/', (req, res) => {
 
 app.use(require('./src/routes/company.route'));
 app.use(require('./src/routes/flight.route'));
-
-console.log('Server running');
-app.listen(process.env.PORT || 3000);
+const port = process.env.PORT || 3000;
+console.log('Server running on ' + port);
+app.listen(port);
