@@ -30,6 +30,7 @@ module.exports = {
                 id: req.params.id,
             },
         });
+        if (!company) res.status(500).send(false);
         company.destroy();
         res.status(200).send(true);
     },
